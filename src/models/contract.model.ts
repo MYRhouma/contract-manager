@@ -123,6 +123,9 @@ const ContractSchema: Schema = new Schema(
     jsonLD: {
       type: String,
     },
+    vlaId: {
+      type: String,
+    },
   },
   {
     timestamps: true,
