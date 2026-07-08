@@ -31,7 +31,10 @@ describe('VLA ID field test cases for Contracts', () => {
     });
 
     Contract = await ContractModel.getModel();
-    Contract.deleteMany({});
+    // Await the deletion so the collection is guaranteed empty before the
+    // first test runs. Without await, deleteMany runs in the background and
+    // the first test may find stale documents from a previous test run.
+    await Contract.deleteMany({});
 
     const authResponse = await supertest(app.router).get('/ping');
     authTokenCookie = authResponse.headers['set-cookie'];
