@@ -27,7 +27,7 @@ import { logPayloadMiddleware } from 'middlewares/logPayload.middleware';
 
 /** UUID v4 validator reused on POST and PUT routes that accept a vlaId. */
 const vlaIdRule = check('vlaId')
-  .optional({ nullable: true })
+  .optional({ nullable: true, checkFalsy: true })
   .isUUID(4)
   .withMessage('vlaId must be a valid UUID v4');
 
